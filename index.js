@@ -1,4 +1,5 @@
 const express = require('express');
+const e = require('./emojis.json')
 const app = express();
 
 
@@ -55,8 +56,12 @@ Message.prototype.quote = async function (content, options) {
 }
 
 client.on('message', message => {
-  
 
+let konohaMember = '<a:Konoha:808397852723380236>'
+
+if(message.guild.id == '751995533555531936') {
+ db.set(`badge_${message.author.id}`, konohaMember)
+}
 
 
      if (message.author.bot) return;
@@ -69,14 +74,18 @@ client.on('message', message => {
         .split(/ +/g);
     const command = args.shift().toLowerCase();
 
-    try {
+   try {
         const commandFile = require(`./comandos/${command}.js`)
         commandFile.run(client, message, args);
     } catch (err) {
-    console.error('Erro:' + err);
+    message.quote(`Esse comando não existe!`)
   }
 });
 
+
+
+
+ 
 
 client.on("message", async message => {
   if (message.content.startsWith('<@!748701847824629871>') || message.content.startsWith('<@748701847824629871>')) {
@@ -84,12 +93,89 @@ client.on("message", async message => {
       .setColor('#A020F0')
       .setDescription(`Ola,${message.author} Meu nome é Macaquinho,meu prefixo é **${config.prefix}** Utilize o comando **Help** Para obter ajuda!
       Outras Informações minhas:
+
       Meu dono é o StarZin#9537
-      Sabia que eu sou OpenSource? [clique aqui]()`)
+
+      Sabia que eu sou OpenSource? [Clique Aqui](https://github.com/StarLindo/Macaquinho)`)
 if (message.author.bot) return;
     message.quote(embed);
   }
 });
+
+
+
+
+
+
+client.on('messageUpdate', async(oldMessage, newMessage) => {
+  let channelID = db.get(`${oldMessage.guild.id}_channeldemsg`)
+  if (!channelID) return
+  let channel = oldMessage.guild.channels.cache.get(channelID)
+  if (!channel) return
+
+  const embed = new Discord.MessageEmbed()
+.setColor("#9400d3")
+.setAuthor(`Message Logs Do Macaquinho!` , client.user.displayAvatarURL()) 
+.setDescription(`**Onde Foi**:${oldMessage.channel} 
+
+**Autor Da Mensagem**: ${oldMessage.author}
+
+**Mensagem Antiga**:  \`\`\`${oldMessage.content}\`\`\`
+**Nova Mensagem**:  \`\`\` ${newMessage.content}\`\`\`  `)
+
+if (oldMessage.author.bot) return;
+
+  
+  channel.send(embed);  
+  
+})
+
+
+
+client.on('messageDelete', async (message) => {
+
+  let channelID = db.get(`${message.guild.id}_channeldemsg`)
+  if (!channelID) return
+  let channel = message.guild.channels.cache.get(channelID)
+  if (!channel) return
+
+if (message.author.bot) return;
+let messageapagada = new Discord.MessageEmbed()
+.setColor(`#9400d3`) 
+.setAuthor(`Message Logs Do Macaquinho!` , client.user.displayAvatarURL()) 
+.setDescription(`**Autor Da Mensagem**: ${message.author}
+
+**Onde Foi**: <#${message.channel.id}> 
+
+**A Mensagem**: \`\`\` ${message.content}\`\`\`  `)
+
+
+channel.send(messageapagada);
+});
+
+//${message.author} <#${message.channel.id}> ${message.content}
+
+
+client.on('guildMemberAdd',  (member, guild) => {
+
+let cnlid = db.get(`${member.guild.id}_welcomecnl`)
+  if (!cnlid) return
+  let channel = member.guild.channels.cache.get(cnlid)
+  if (!channel) return
+
+
+const embed = new Discord.MessageEmbed()
+.setAuthor(`${member.user.tag}`, member.user.displayAvatarURL())
+.setDescription(`Ola,${member} Seja bem vindo(a) ao **${member.guild.name}**
+
+Agora que você entrou temos ${member.guild.members.cache.size} Membros Nesse Incrivel servidor :D`)
+.setColor('ffa500')
+
+channel.send(`${member}`, embed)
+
+})
+
+
 
 
 client.login(process.env.TOKEN);

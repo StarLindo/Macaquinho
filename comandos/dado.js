@@ -4,7 +4,9 @@ exports.run = (client, message, args) => {
 
 let dd = args[0] 
 
-
+if (isNaN(args[0])){
+        return message.quote(`Você tem que inserir uma quantidade numerica!`);
+    };
 
 let add = Math.floor(Math.random() * dd) + 0;
 

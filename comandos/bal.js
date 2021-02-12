@@ -13,13 +13,15 @@ let guildmoney = db.fetch(`money_${message.guild.id}`)
 
 const bal = new Discord.MessageEmbed()
 .setTitle('Informações Do Dinheiro')
-.setColor('GREEN')
+.setColor('BROWN')
 .setDescription(`Dinheiro De ${member}:
 
 Dinheiro Do Usuario: **R$${money}**
 
 `)
+.setFooter('© Todos os Direitos Macaquinho Bot')
 
 message.quote(bal)
+
 
 }

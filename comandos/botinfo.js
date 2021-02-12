@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const e = require('../emojis.json')
 
-exports.run = (client, message, args) => {
+module.exports.run = async (client, message, args) => {
 
 const botinfo = new Discord.MessageEmbed()
 .setTitle('Minhas Informações!')
@@ -15,8 +15,17 @@ Meu Criador Se Chama:<@697165280761217045> ${e.rmacaco}
 
 Você pode usar o comando **Help** Para obter ajuda.
 
+Sabia que eu sou Open Source?
+[clique aqui](https://github.com/StarLindo/Macaquinho)
+
+
+Mais sobre minha vida de Macaco:
+
+Cientistas me capturaram para fazer experimentos em mim e eu quero me vingar de todos os humanos,mas você é um humano Legal ${e.love} 
 `)
+.setFooter('© Todos os Direitos Macaquinho Bot')
+.setColor('RED');
 
 
-message.quote(botinfo)
+await message.quote(botinfo)
 }

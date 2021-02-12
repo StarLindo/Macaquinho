@@ -14,10 +14,12 @@ exports.run = async(client, message, args) => {
     const m = await message.quote(embed);
 
     m.edit(
+      
     embed.setDescription(`Latência do Server: **${m.createdTimestamp -
       message.createdTimestamp}ms.**\nLatência da API: **${Math.round(
       client.ws.ping
     )}ms**`)
+    
     
   )
 }

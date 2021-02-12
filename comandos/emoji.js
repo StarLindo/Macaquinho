@@ -11,7 +11,8 @@ module.exports.run = async (client, message, args, prefix) => {
    if (custom.id) {
       const embed = new Discord.MessageEmbed()
          .setDescription(`[Quer Baixar o Emoji?Clique aqui!](https://cdn.discordapp.com/emojis/${custom.id}.${custom.animated ? "gif" : "png"})`)
-         .setColor("RED")
+         .setColor("BROWN")
+         .setFooter('© Todos os Direitos Macaquinho Bot')
          .setImage(`https://cdn.discordapp.com/emojis/${custom.id}.${custom.animated ? "gif" : "png"}`);
       return message.quote(embed);
    } else {
@@ -19,8 +20,11 @@ module.exports.run = async (client, message, args, prefix) => {
       if (!parsed[0]) return message.quote("Emoji invalido!!");
       const embed = new Discord.MessageEmbed()
          .setDescription(`[Quer Baixar o Emoji?Clique aqui!](${parsed[0].url})`)
-         .setColor("RED")
+         .setColor("BROWN")
+         .setFooter('© Todos os Direitos Macaquinho Bot')
          .setImage(parsed[0].url);
+         
+
       return message.quote(embed);
    }
 }
