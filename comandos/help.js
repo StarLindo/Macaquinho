@@ -13,7 +13,7 @@ ${e.macaco1} Meus comandos utilitarios:
 \`Botinfo,Help,Emoji,Ping,Randomavatar e Userinfo\` 
 
 ${e.macaco2} Comandos De Economia
-\`Bal,Dadobet E minerar\` 
+\`Bal,Dadobet,Caçar e Minerar\` 
 
 ${e.sunmacaco} Comandos De configuração:
 \`Setmessagelogs,Painel E setwelcome\` `)
