@@ -16,7 +16,7 @@ const bal = new Discord.MessageEmbed()
 .setColor('BROWN')
 .setDescription(`Dinheiro De ${member}:
 
-Dinheiro Do Usuario: **R$${money}**
+Dinheiro Do Usuario: **R$${money.toLocaleString()}**
 
 `)
 .setFooter('© Todos os Direitos Macaquinho Bot')

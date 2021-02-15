@@ -5,7 +5,7 @@ Macaquinho é um bot de diversão,economia e comandos utilitarios,Lembre se,ele 
 
 # Developers
 Star:
-Discord: StarZin#9537
+#### Discord: StarZin#9537
 
 Só isso msm ;-;
 

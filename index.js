@@ -1,5 +1,6 @@
 const express = require('express');
 const e = require('./emojis.json')
+const ms = require('parse-ms')
 const app = express();
 
 
@@ -74,12 +75,19 @@ if(message.guild.id == '751995533555531936') {
         .split(/ +/g);
     const command = args.shift().toLowerCase();
 
+    if(command)db.add(`usodecmd_${message.author.id}`, 1)
+
    try {
         const commandFile = require(`./comandos/${command}.js`)
         commandFile.run(client, message, args);
     } catch (err) {
-    message.quote(`Esse comando não existe!`)
+    message.quote(`Esse comando não existe!`);
   }
+
+  
+
+
+
 });
 
 
@@ -179,3 +187,6 @@ channel.send(`${member}`, embed)
 
 
 client.login(process.env.TOKEN);
+
+
+//

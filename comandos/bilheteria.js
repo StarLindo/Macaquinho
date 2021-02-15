@@ -1,10 +1,29 @@
 const Discord = require('discord.js')
 const e = require('../emojis.json')
 const db = require('quick.db')
+const ms = require('parse-ms')
 
 module.exports.run = async (client, message, args) => {
 
+let user = message.author;
 
+   
+
+
+    let author =  db.fetch(`bilheteria_${user.id}`)
+
+    let timeout = 300000;
+    
+    if (author !== null && timeout - (Date.now() - author) > 0) {
+        
+        let time = ms(timeout - (Date.now() - author));
+    
+        let timeEmbed = new Discord.MessageEmbed()
+        .setColor("#008000")
+        .setDescription(`Você ja comprou um bilhete a pouco tempo,espere **${time.minutes}m ${time.seconds}s** para pegar outro bilhete`);
+        
+        message.quote(`${user}`, timeEmbed);
+    } else {
   
 
   
@@ -22,8 +41,11 @@ ${e.sunmacaco} **R$${money}**
 .setColor('BROWN');
 
 db.add(`money_${message.author.id}`, money)
+db.set(`bilheteria_${user.id}`, Date.now());
 
 
 
 message.channel.send(`${message.author}`, bilhete)
+
+    };
 }
