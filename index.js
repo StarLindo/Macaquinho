@@ -75,6 +75,7 @@ if(message.guild.id == '751995533555531936') {
         .split(/ +/g);
     const command = args.shift().toLowerCase();
 
+
     if(command)db.add(`usodecmd_${message.author.id}`, 1)
 
    try {

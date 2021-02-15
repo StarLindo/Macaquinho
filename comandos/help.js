@@ -19,7 +19,7 @@ ${e.sunmacaco} Comandos De configuração:
 \`Setmessagelogs,Painel E setwelcome\` 
 
 <:macaco_coffe:809953943744544779> Comandos de Photoshop(manipulação de imagem)
-\`Perfect,Dieplague,Canvasfodase,Kannapat e Canvasdesfodase\` `)
+\`Perfect,Dieplague,Canvasfodase,Kannapat,Canvasdesfodase E procurado\` `)
 .setFooter('© Todos os Direitos Macaquinho Bot')
 .setColor('BROWN')
 

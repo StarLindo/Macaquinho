@@ -14,6 +14,7 @@
     "discord.js": "^12.5.1",
     "express": "^4.17.1",
     "humanize-duration": "^3.25.1",
+    "jimp": "^0.16.1",
     "node-fetch": "^2.6.1",
     "parse-ms": "^2.1.0",
     "quick.db": "^7.1.3",
