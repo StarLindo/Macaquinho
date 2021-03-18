@@ -9,8 +9,8 @@ exports.run = (client, message, args) => {
 const embed = new Discord.MessageEmbed()
 .setTitle(`<:info:807982420442742825>  Informações Do Usuario:`)
 .addField(`🆔  ID da pessoa:`, `${member.id}`, false)
-.addField(`📅  Quando criou a Conta:`, `${member.user.createdAt.toLocaleDateString("pt-BR")}`, true)
-.addField(`📅  Quando Entrou no servidor:`, `${member.joinedAt.toLocaleDateString("pt-BR")}`, true)
+.addField(`📅  Quando criou a Conta:`, `${member.user.createdAt.toLocaleString("pt-BR")}`, true)
+.addField(`📅  Quando Entrou no servidor:`, `${member.joinedAt.toLocaleString("pt-BR")}`, true)
 .addField(`#️⃣  Tag da pessoa:`, member.user.discriminator)
 .addField(`🌐  Nome Da Pessoa:`, `${member.user.username}`, true)
 

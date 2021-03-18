@@ -7,19 +7,22 @@ const help = new Discord.MessageEmbed()
 .setDescription(`Ola ${message.author} Seja Bem Vindo(a) ao meu painel de ajuda,observe meus comandos e suas funções:
 
 ${e.funmacaco} Comandos De Diversão:
-\`Bilheteria,Dado,Perfil,Kiss,Hug,Brindar E pat\`
+\`Bilheteria,Dado,Perfil,Kiss,Hug,Brindar,pat E Sobremim\`
 
 ${e.macaco1} Meus comandos utilitarios:
 \`Botinfo,Help,Emoji,Ping,Randomavatar e Userinfo\` 
 
-${e.macaco2} Comandos De Economia
+${e.macaco2} Comandos De Economia:
 \`Bal,Dadobet,Caçar,Minerar E Daily\` 
 
 ${e.sunmacaco} Comandos De configuração:
-\`Setmessagelogs,Painel E setwelcome\` 
+\`Setmessagelogs,Painel,setwelcome e setprefix\`
+
+${e.petzin} Comandos de animal:
+\`adotarpet,petinfo,setpetname,treinarpet,evoluirpet e petacariciar\`
 
 <:macaco_coffe:809953943744544779> Comandos de Photoshop(manipulação de imagem)
-\`Perfect,Dieplague,Canvasfodase,Kannapat,Canvasdesfodase E procurado\` `)
+\`Perfect,Dieplague,Canvasfodase,Kannapat,Canvasdesfodase, procurado E bobfire\` `)
 .setFooter('© Todos os Direitos Macaquinho Bot')
 .setColor('BROWN')
 

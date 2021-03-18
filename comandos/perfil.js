@@ -6,12 +6,19 @@ module.exports.run = async (client, message, args) => {
 let member = client.users.cache.get(args[0]) || message.mentions.users.first() ||  message.author
 
 
-let badge = db.get(`badge_${member.id}`)
-if(!badge) badge = 'Sem Badge'
+let animal = db.get(`animal_${member.id}`)
+if(!animal){
+animal = 'Sem animal'
+}
 
 
 let cs = db.fetch(`usodecmd_${member.id}`)
 if(!cs) cs = 0 
+
+let sobremim = db.get(`sobremim_${member.id}`)
+if(!sobremim){
+sobremim = 'Nenhuma biografia definida.'
+}
 
 let money = db.fetch(`money_${member.id}`)
 if(!money) money = 0
@@ -25,7 +32,9 @@ const perfilsb = new Discord.MessageEmbed()
 .setTitle(`Perfil De: ${member.tag}`)
 .setDescription(`Dinheiro De ${member}: **R$${money}**
 
-Badges:\n${badge} 
+Animal de estimação:${animal}
+
+Biografia: ${sobremim}
 
 Quantas vezes ja usou meus comandos: ${cs} Vezes
 `)

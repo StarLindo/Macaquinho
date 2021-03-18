@@ -1,4 +1,7 @@
-const { MessageEmbed }= require('discord.js');
+const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
+
+const db = require('quick.db')
 
 module.exports.run = async (client, message, args) => {
 
@@ -27,7 +30,7 @@ await message.quote('Executando o codigo...').then(async m => {
       .setDescription('<a:dl_sim:795202789096816650> Parabens,Você acertou!!\n\n<a:dl_entrada:795203745843642368> **Entrada**: ```' + code + '```\n<a:dl_saida:795203258293026866> **Saida**: ```' + result.slice(0, 2000) + '```')
       .setColor('#00ff00')
       .setFooter('© Todos os Direitos Macaquinho Bot')
-    m.edit( { embed: embed })
+    await m.edit( { embed: embed })
   } catch (e) {
     let embed = new MessageEmbed(message.author).setTimestamp()
      

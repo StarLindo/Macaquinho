@@ -27,13 +27,13 @@ var aleatorio = bixos[Math.floor(Math.random() * bixos.length)];
         let timeEmbed = new Discord.MessageEmbed()
         .setColor("#008000")
         .setDescription(`Você ja caçou há pouco tempo,espere **${time.minutes}m ${time.seconds}s** para caçar de novo`);
-        
+           
         message.quote(`${user}`, timeEmbed);
     } else {
 
 
 const caça = new Discord.MessageEmbed()
-.setTitle(`Mineração`)
+.setTitle(`Caça`)
 .setDescription(`Você caçou com sua espada de fogo ( <:fogoespada:809766855744028673> )
 e achou um(a) ${aleatorio} !`)
 

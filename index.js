@@ -1,6 +1,8 @@
 const express = require('express');
 const e = require('./emojis.json')
 const ms = require('parse-ms')
+const bplHelper = require("bpl-helper");
+const helper = new bplHelper("748701847824629871");
 const app = express();
 
 
@@ -58,31 +60,41 @@ Message.prototype.quote = async function (content, options) {
 
 client.on('message', message => {
 
-let konohaMember = '<a:Konoha:808397852723380236>'
 
-if(message.guild.id == '751995533555531936') {
- db.set(`badge_${message.author.id}`, konohaMember)
+
+
+let prefix = db.get(`prefix_${message.guild.id}`)
+if(!prefix){
+prefix = config.prefix
 }
+
 
 
      if (message.author.bot) return;
      if (message.channel.type == 'dm') return;
-     if (!message.content.toLowerCase().startsWith(config.prefix.toLowerCase())) return;
+
+     if (!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
      if (message.content.startsWith(`<@!${client.user.id}>`) || message.content.startsWith(`<@${client.user.id}>`)) return;
 
     const args = message.content
-        .trim().slice(config.prefix.length)
-        .split(/ +/g);
-    const command = args.shift().toLowerCase();
+    .trim().slice(prefix.length)
+    .split(/ +/g);
+  let command = args.shift().toLowerCase();
 
 
+let embd = new Discord.MessageEmbed()
+.setDescription(`<:errado:817512277821095957> | O Comando **${command}** Não foi encontrado.`)
+.setFooter(`Utilize "${prefix}Help" por ajuda.`)
     if(command)db.add(`usodecmd_${message.author.id}`, 1)
-
+    if (command === "e") command = "eval"
+    if(command === "atm") command = "bal"
    try {
         const commandFile = require(`./comandos/${command}.js`)
+        
+
         commandFile.run(client, message, args);
     } catch (err) {
-    message.quote(`Esse comando não existe!`);
+    message.quote(embd);
   }
 
   
@@ -92,18 +104,32 @@ if(message.guild.id == '751995533555531936') {
 });
 
 
+client.on("ready", async message => {
 
+
+
+
+console.log(`Online e com ${client.guilds.cache.size} Servidores!`)
+})
 
  
 
 client.on("message", async message => {
+
+  
+ 
+
+  let prefix = db.get(`prefix_${message.guild.id}`)
+  if(!prefix){
+  prefix = config.prefix
+  }
   if (message.content.startsWith('<@!748701847824629871>') || message.content.startsWith('<@748701847824629871>')) {
     let embed = new Discord.MessageEmbed()
       .setColor('#A020F0')
-      .setDescription(`Ola,${message.author} Meu nome é Macaquinho,meu prefixo é **${config.prefix}** Utilize o comando **Help** Para obter ajuda!
+      .setDescription(`Ola,${message.author} Meu nome é Macaquinho,meu prefixo nesse servidor é **${prefix}** Utilize o comando **Help** Para obter ajuda!
       Outras Informações minhas:
 
-      Meu dono é o StarZin#9537
+      Meu dono é o Portgas D. Star#9537
 
       Sabia que eu sou OpenSource? [Clique Aqui](https://github.com/StarLindo/Macaquinho)`)
 if (message.author.bot) return;
@@ -138,6 +164,7 @@ if (oldMessage.author.bot) return;
   channel.send(embed);  
   
 })
+
 
 
 
@@ -185,9 +212,43 @@ channel.send(`${member}`, embed)
 })
 
 
+client.on('guildMemberRemove',  (member, guild) => {
+
+let cnlid = db.get(`${member.guild.id}_welcomecnl`)
+  if (!cnlid) return
+  let channel = member.guild.channels.cache.get(cnlid)
+  if (!channel) return
+
+
+const embed = new Discord.MessageEmbed()
+.setAuthor(`${member.user.tag}`, member.user.displayAvatarURL())
+.setDescription(`O membro${member} Sai do nosso servidor (**${member.guild.name}**)
+
+Agora que ele saiu temos apenas ${member.guild.members.cache.size} Membros Nesse Incrivel servidor :(`)
+.setColor('ffa500')
+
+channel.send(`${member}`, embed)
+
+})
+
+
+helper.on("ready", async (socket) => {
+  console.log("Blue Phoenix Fera!");
+});
+
+helper.on("vote", async (data) => {
+  let pessoa =  await client.channels.fetch("821147802469531730")
+
+const embd = new Discord.MessageEmbed()
+.setTitle("Votaram Em mim!")
+.setDescription(` O usuario \`${data.user.username}\` Votou em mim,agora eu tenho \`${data.bot.votos}\` Votos! :)
+Voce Tambem pode votar em mim clicando [Aqui](https://bluephoenixlist.tk/bot/748701847824629871/vote) `)
+.setColor("#993399")
+  pessoa.send(`<@697165280761217045>`, embd);
+});
+
 
 
 client.login(process.env.TOKEN);
 
 
-//

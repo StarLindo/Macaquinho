@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 exports.run = async (client, message, args) => {
 
 
-let pessoa = message.mentions.users.first() || client.users.cache.get(args[0]);
+let pessoa = message.mentions.users.first() || client.users.cache.get(args[0])
 
 if(!pessoa){
 pessoa = message.author
