@@ -63,8 +63,8 @@ client.on('message', message => {
 
 
 
-let prefix = db.get(`prefix_${message.guild.id}`)
-if(!prefix){
+let prefix = db.get(`${message.guild.id}_prefix`)
+if(prefix === null) {
 prefix = config.prefix
 }
 
@@ -119,7 +119,7 @@ client.on("message", async message => {
   
  
 
-  let prefix = db.get(`prefix_${message.guild.id}`)
+  let prefix = db.get(`${message.guild.id}_prefix`)
   if(!prefix){
   prefix = config.prefix
   }

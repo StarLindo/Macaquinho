@@ -6,6 +6,7 @@ module.exports.run = async (client, message, args) => {
 let member = client.users.cache.get(args[0]) || message.mentions.users.first() ||  message.author
 
 
+
 let animal = db.get(`animal_${member.id}`)
 if(!animal){
 animal = 'Sem animal'
@@ -25,7 +26,22 @@ if(!money) money = 0
 
 
 
+
+
+
 let avatar = member.avatarURL({ dynamic: true, format: "png", size: 1024 });
+
+
+
+let b = ``
+if(db.get(`${member.id}_casado`)){
+b = `<@${db.get(`${member.id}_casado`)}>`
+}
+if(!db.get(`${member.id}_casado`)){
+b = `Ninguem. :clown:`
+}
+
+
 
 const perfilsb = new Discord.MessageEmbed()
 .setThumbnail(avatar)
@@ -35,6 +51,8 @@ const perfilsb = new Discord.MessageEmbed()
 Animal de estimação:${animal}
 
 Biografia: ${sobremim}
+
+Casado com: ${b}
 
 Quantas vezes ja usou meus comandos: ${cs} Vezes
 `)

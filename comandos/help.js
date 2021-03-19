@@ -7,7 +7,7 @@ const help = new Discord.MessageEmbed()
 .setDescription(`Ola ${message.author} Seja Bem Vindo(a) ao meu painel de ajuda,observe meus comandos e suas funções:
 
 ${e.funmacaco} Comandos De Diversão:
-\`Bilheteria,Dado,Perfil,Kiss,Hug,Brindar,pat E Sobremim\`
+\`Bilheteria,Dado,Perfil,Kiss,Hug,Brindar,pat,Sobremim,Casar e Divorce\`
 
 ${e.macaco1} Meus comandos utilitarios:
 \`Botinfo,Help,Emoji,Ping,Randomavatar e Userinfo\` 
