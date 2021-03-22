@@ -18,6 +18,9 @@ ${e.macaco2} Comandos De Economia:
 ${e.sunmacaco} Comandos De configuração:
 \`Setmessagelogs,Painel,setwelcome,setprefix e setlevel\`
 
+${e.macaco2} Comandos De level:
+\`level\`
+
 ${e.funmacaco} Meus Comandos de RP (Role play)
 \`Casar,Divorce,comprarcarro,mapa,pescar,pao,youtube e clan\`
 
