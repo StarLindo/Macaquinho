@@ -63,7 +63,7 @@ client.on('message', message => {
 
 
 
-let prefix = db.get(`${message.guild.id}_prefix`)
+let prefix = db.get(`prefix_${message.guild.id}`)
 if(prefix === null) {
 prefix = config.prefix
 }
@@ -102,6 +102,7 @@ let embd = new Discord.MessageEmbed()
 
 
 });
+
 
 
 client.on('message', async message => {

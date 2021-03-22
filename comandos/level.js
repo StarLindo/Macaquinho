@@ -17,12 +17,14 @@ if(!xpzin2){
 xpzin2 = 0
 }
 const embed = new Discord.MessageEmbed()
-.setTitle(`Level!`)
-.setDescription(`<:level:823531492814618664> Level de ${pessoa}: **${levelzin2}**
-<:level:823531492814618664> Xp de ${pessoa}: **${xpzin2}**
-<:level:823531492814618664> Quanto de xp falta Para ${pessoa} upar de nivel: **${100 - xpzin2}**
+
+.setDescription(`
+**<:BP_canal_loja:766666245721817128>  »  Status de ${pessoa}.**
+>>> 🪄  |  Experiência: **${xpzin2}**
+🔮  |  Nível: **${levelzin2}**
+<a:BP_novo_level:754350267872444477>  |  Experiência para o próximo nível: **${100 - xpzin2}**
 `)
-.setColor("#10b040")
-.setThumbnail('https://media1.tenor.com/images/134212ba34a8099c993e07a686345f84/tenor.gif?itemid=8215787')
+.setColor("RED")
+.setThumbnail(pessoa.avatarURL())
 message.quote(embed)
 }
