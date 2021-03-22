@@ -7,7 +7,7 @@ const help = new Discord.MessageEmbed()
 .setDescription(`Ola ${message.author} Seja Bem Vindo(a) ao meu painel de ajuda,observe meus comandos e suas funções:
 
 ${e.funmacaco} Comandos De Diversão:
-\`Bilheteria,Dado,Perfil,Kiss,Hug,Brindar,pat,Sobremim,Casar e Divorce\`
+\`Bilheteria,Dado,Perfil,Kiss,Hug,Brindar,pat,Sobremim\`
 
 ${e.macaco1} Meus comandos utilitarios:
 \`Botinfo,Help,Emoji,Ping,Randomavatar e Userinfo\` 
@@ -16,7 +16,12 @@ ${e.macaco2} Comandos De Economia:
 \`Bal,Dadobet,Caçar,Minerar E Daily\` 
 
 ${e.sunmacaco} Comandos De configuração:
-\`Setmessagelogs,Painel,setwelcome e setprefix\`
+\`Setmessagelogs,Painel,setwelcome,setprefix e setlevel\`
+
+${e.funmacaco} Meus Comandos de RP (Role play)
+\`Casar,Divorce,comprarcarro,mapa,pescar,pao,youtube e clan\`
+
+
 
 ${e.petzin} Comandos de animal:
 \`adotarpet,petinfo,setpetname,treinarpet,evoluirpet e petacariciar\`

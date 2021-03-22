@@ -104,6 +104,33 @@ let embd = new Discord.MessageEmbed()
 });
 
 
+client.on('message', async message => {
+
+let a = db.get(`levelconfig_${message.guild.id}`)
+if(a !== "on")return
+
+let amount = 1
+if(db.get(`${message.author.id}_premium`)){
+amount = 2
+}
+
+db.add(`xpzin_${message.author.id}_${message.guild.id}`, amount)
+let levelzin1 = db.fetch(`levelzin_${message.author.id}_${message.guild.id}`)
+let xpzin1 = db.fetch(`xpzin_${message.author.id}_${message.guild.id}`)
+
+if(xpzin1 > 99){
+db.subtract(`xpzin_${message.author.id}_${message.guild.id}`, 99)
+db.add(`levelzin_${message.author.id}_${message.guild.id}`, 1)
+
+
+let a = message.channel.send(`**Parabens, ${message.author} você subiu o seu nivel, agora você esta no nivel ${levelzin1 + 1}**`).then((a) => a.delete({ timeout: 3000 }))
+
+
+}
+
+
+})
+
 client.on("ready", async message => {
 
 
@@ -129,7 +156,7 @@ client.on("message", async message => {
       .setDescription(`Ola,${message.author} Meu nome é Macaquinho,meu prefixo nesse servidor é **${prefix}** Utilize o comando **Help** Para obter ajuda!
       Outras Informações minhas:
 
-      Meu dono é o Portgas D. Star#9537
+      Meu dono é o <@697165280761217045>
 
       Sabia que eu sou OpenSource? [Clique Aqui](https://github.com/StarLindo/Macaquinho)`)
 if (message.author.bot) return;
@@ -241,10 +268,12 @@ helper.on("vote", async (data) => {
 
 const embd = new Discord.MessageEmbed()
 .setTitle("Votaram Em mim!")
-.setDescription(` O usuario \`${data.user.username}\` Votou em mim,agora eu tenho \`${data.bot.votos}\` Votos! :)
+.setDescription(` O usuario \`${data.user.username}\`  Votou em mim,agora eu tenho \`${data.bot.votos}\` Votos! :)
 Voce Tambem pode votar em mim clicando [Aqui](https://bluephoenixlist.tk/bot/748701847824629871/vote) `)
 .setColor("#993399")
   pessoa.send(`<@697165280761217045>`, embd);
+
+
 });
 
 

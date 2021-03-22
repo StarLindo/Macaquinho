@@ -6,6 +6,11 @@ exports.run = async (client, message, args) => {
  let member = message.mentions.members.first() || message.guild.members.cache.get(args[0])
 
 
+
+if(!member){
+return message.quote(`**Mencione com quem você quer casar!**`)
+}
+
 if(member.id === client.user.id){
  return message.quote(`**Eu não posso casar com você,eu sou um animal e você um Humano!**`) 
 }
@@ -13,9 +18,6 @@ if(member.id === message.author.id){
  return message.quote(`**Como você vai casar com você mesmo?**`) 
 }
 
-if(!member){
-return message.quote(`**Mencione com quem você quer casar!**`)
-}
 
 if(db.get(`${message.author.id}_casado`)) return message.quote(`**Você Ja é casado(a)!**`)
 

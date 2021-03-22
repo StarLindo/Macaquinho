@@ -18,6 +18,10 @@ if(!a4){
 a4 = config.prefix
 }
 
+let a5 = db.get(`levelconfig_${message.guild.id}`)
+if(!a5){
+a5 = "Off"
+}
 const b = new Discord.MessageEmbed()
 
 .setDescription(`Configurações Do Servidor "**${message.guild.name}**"
@@ -27,6 +31,8 @@ ${e.engrenagem} Canal de MessageLogs: **${a1}** / Você pode mudar o canal Com o
 ${e.engrenagem} Canal de Welcome: **${a3}** / Você pode mudar o canal Com o comando **setwelcome**
 
 ${e.engrenagem} Meu prefixo nesse servidor: **${a4}** /
-Você pode setar o meu prefix nesse servidor com o comando **setprefix** `)
+Você pode setar o meu prefix nesse servidor com o comando **setprefix** 
+
+${e.engrenagem} Sistema de Level: **${a5}** / Você pode setar On ou Off com o comando **setlevel**`)
 message.channel.send(b)
 }

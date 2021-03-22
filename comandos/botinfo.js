@@ -9,7 +9,7 @@ const botinfo = new Discord.MessageEmbed()
 
 Você Pode me Adicionar clicando [aqui!](https://discord.com/oauth2/authorize?=&client_id=748701847824629871&scope=bot&permissions=8)${e.macaco2}
 
-Meu Criador Se Chama:Portgas D. Star#9537 ${e.rmacaco}
+Meu Criador Se Chama:<@697165280761217045> ${e.rmacaco}
 
 **Programação**", Programado em [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) com <:nodejs:807059588552720416> [Node.js](https://nodejs.org/en/)\n> Livraria:[Discord.js](https://discord.js.org/#/docs/main/stable/general/welcome) \n Hospedagem: [Repl.it](https://repl.it)
 

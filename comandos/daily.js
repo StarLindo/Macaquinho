@@ -6,12 +6,19 @@ module.exports.run = async (client, message, args) => {
     
     let user = message.author;
 
-    let timeout = 8640000;
+    let timeout = 86400000;
+
+if(db.get(`${user.id}_premium`)){
+timeout = 43200000;
+}
 
     let daily = await db.fetch(`daily_${message.guild.id}_${user.id}`);
     
-    let amount = Math.floor(Math.random() * 50000) + 5000;
-    
+    let amount = Math.floor(Math.random() * 10000) + 1000;
+    if(db.get(`${user.id}_premium`)){
+    amount = Math.floor(Math.random() * 50000) + 20000;
+    }
+
     if (daily !== null && timeout - (Date.now() - daily) > 0) {
         let time = ms(timeout - (Date.now() - daily));
   

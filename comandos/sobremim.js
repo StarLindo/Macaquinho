@@ -7,6 +7,6 @@ module.exports.run = async (client, message, args) => {
   return message.quote(`Escreva alguma coisa!`)
   }
 
-message.quote(`Sua nova Bio agora é \`${bio}\` `)
+message.quote(`Bio atualizada com Sucesso! `)
 db.set(`sobremim_${message.author.id}`, bio)
 }

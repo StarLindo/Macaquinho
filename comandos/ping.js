@@ -11,7 +11,7 @@ exports.run = async(client, message, args) => {
     .setDescription(`${user}`)
     .setAuthor(message.author.tag, avatar)
     
-    const m = await message.quote(embed);
+    const m = await message.quote(`Sai dai aleki`);
 
     m.edit(
       
