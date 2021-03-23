@@ -75,6 +75,7 @@ prefix = config.prefix
 
      if (!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
      if (message.content.startsWith(`<@!${client.user.id}>`) || message.content.startsWith(`<@${client.user.id}>`)) return;
+     
 
     const args = message.content
     .trim().slice(prefix.length)
@@ -83,7 +84,7 @@ prefix = config.prefix
 
 
 let embd = new Discord.MessageEmbed()
-.setDescription(`<:errado:817512277821095957> | O Comando **${command}** Não foi encontrado.`)
+.setDescription(`❌ | O Comando **${command}** Não foi encontrado.`)
 .setFooter(`Utilize "${prefix}Help" por ajuda.`)
     if(command)db.add(`usodecmd_${message.author.id}`, 1)
     if (command === "e") command = "eval"
@@ -104,23 +105,61 @@ let embd = new Discord.MessageEmbed()
 });
 
 
+client.on('message', async message => {
+  
+  let canal = client.channels.cache.get("823892664326815774")
+
+ 
+let embed = new Discord.MessageEmbed()
+.setTitle(`Usaram meus comandos!`)
+.setDescription(`Pessoa que usou o comando: **${message.author}**
+
+Servidor: **${message.guild}**
+
+Mensagem completa: **${message.content}**
+`)
+.setColor(`#9400d3`)
+
+  if(message.content.startsWith("mk.")){
+    canal.send(embed)
+    }
+
+
+
+})
 
 client.on('message', async message => {
 
+
+if(message.author.bot) return
 let a = db.get(`levelconfig_${message.guild.id}`)
 if(a !== "on")return
 
-let amount = 1
-if(db.get(`${message.author.id}_premium`)){
-amount = 2
+let amount = Math.floor(Math.random() * 25) + 5;
+
+if(db.get(`${message.author.id}_frutalevel`)){
+ amount = amount + amount
 }
 
 db.add(`xpzin_${message.author.id}_${message.guild.id}`, amount)
 let levelzin1 = db.fetch(`levelzin_${message.author.id}_${message.guild.id}`)
+if(levelzin1 > 20 && !db.get(`${message.author.id}_level20`)){
+db.add(`money_${message.author.id}`, 100000)
+db.set(`${message.author.id}_level20`, true)
+message.quote(`**Você ganhou R$100.000 por ser nivel +20**`)
+}
+
+if(levelzin1 > 29 && !db.get(`${message.author.id}_level30`)){
+db.add(`money_${message.author.id}`, 200000)
+db.set(`${message.author.id}_premium`, true)
+db.set(`${message.author.id}_level30`, true)
+message.quote(`**Você ganhou R$200.000 e virou premium por ser nivel +30!**`)
+}
+
 let xpzin1 = db.fetch(`xpzin_${message.author.id}_${message.guild.id}`)
 
-if(xpzin1 > 99){
-db.subtract(`xpzin_${message.author.id}_${message.guild.id}`, 99)
+if(xpzin1 > 1000){
+db.subtract(`xpzin_${message.author.id}_${message.guild.id}`, 999)
 db.add(`levelzin_${message.author.id}_${message.guild.id}`, 1)
 
 
@@ -277,7 +316,45 @@ Voce Tambem pode votar em mim clicando [Aqui](https://bluephoenixlist.tk/bot/748
 
 });
 
+client.on('guildCreate', guild => {
+let abc = client.channels.cache.get("823885463860936756")
+const embed = new Discord.MessageEmbed()
+.setTitle("Hello!")
+.setDescription(`Fui adicionado no servidor **${guild.name}**!
+Nome e Id do Servidor: **${guild.name}** / **${guild.id}**
 
+Nome e Id do Dono do servidor: **${guild.owner}** / **${guild.owner.id}**`)
+.setColor("Green")
+
+
+abc.send(embed)
+})
+
+client.on('guildDelete', guild => {
+let abc = client.channels.cache.get("823885463860936756")
+const embed = new Discord.MessageEmbed()
+.setTitle("Hello!")
+.setDescription(`Fui Removido no servidor **${guild.name}**!
+Nome e Id do Servidor: **${guild.name}** / **${guild.id}**
+
+Nome e Id do Dono do servidor: **${guild.owner}** / **${guild.owner.id}**`)
+.setColor("Red")
+
+
+abc.send(embed)
+})
+
+client.on('guildCreate', guild => {
+let canal = client.channels.cache.get("823885463860936757")
+
+canal.setName(`Estou em ${client.guilds.cache.size} Servidores!`)
+})
+
+client.on('guildDelete', guild => {
+let canal = client.channels.cache.get("823885463860936757")
+
+canal.setName(`Estou em ${client.guilds.cache.size} Servidores!`)
+})
 
 client.login(process.env.TOKEN);
 

@@ -42,11 +42,10 @@ b = `Ninguem. :clown:`
 }
 
 
-
 const perfilsb = new Discord.MessageEmbed()
 .setThumbnail(avatar)
 .setTitle(`Perfil De: ${member.tag}`)
-.setDescription(`Dinheiro De ${member}: **R$${money}**
+.setDescription(`Dinheiro De ${member}: **R$$${money.toLocaleString()}**
 
 Animal de estimação:${animal}
 
@@ -57,7 +56,7 @@ Casado com: ${b}
 Quantas vezes ja usou meus comandos: ${cs} Vezes
 `)
 .setFooter('© Todos os Direitos Macaquinho Bot')
-.setColor('BROWN');
+.setColor('RED');
 
 message.quote(perfilsb)
 }

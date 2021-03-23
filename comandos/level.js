@@ -22,7 +22,7 @@ const embed = new Discord.MessageEmbed()
 **<:BP_canal_loja:766666245721817128>  »  Status de ${pessoa}.**
 >>> 🪄  |  Experiência: **${xpzin2}**
 🔮  |  Nível: **${levelzin2}**
-<a:BP_novo_level:754350267872444477>  |  Experiência para o próximo nível: **${100 - xpzin2}**
+<a:BP_novo_level:754350267872444477>  |  Experiência para o próximo nível: **${1000 - xpzin2}**
 `)
 .setColor("RED")
 .setThumbnail(pessoa.avatarURL())

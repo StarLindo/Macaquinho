@@ -12,6 +12,11 @@ if(db.get(`${message.author.id}_premium`)){
 peixes = Math.floor(Math.random() * 600) + 200;
 }
 
+if(db.get(`${message.author.id}_paodinheiro`)){
+  peixes = peixes + peixes
+}
+
+
 message.quote(`**Você pescou ${qtdp} Peixes,Vendeu para Thiagão Do Peixe e conseguiu R$${peixes},00!**`)
 db.add(`money_${message.author.id}`, peixes)
 }

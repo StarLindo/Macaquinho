@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args) => {
   if (![`${dev}`, `${staff}`, `697165280761217045`, `705226061507723346`].some(a => message.author.id === a)) return message.quote('Apenas meus donos podem usar isso')
   const code = args.join(' ')
   if (!code)
-    return message.quote(
+    return await message.quote(
       `Insira um valor para executar o eval.`
     );
 await message.quote('Executando o codigo...').then(async m => {
@@ -20,7 +20,7 @@ await message.quote('Executando o codigo...').then(async m => {
     let result = eval(code)
 
     if (result instanceof Promise) {
-      m.edit('Uma promise encontrada,estou esperando ela ser resolvida!')
+      await m.edit('Uma promise encontrada,estou esperando ela ser resolvida!')
       await result
     }
     if (typeof result !== 'string') result = require('util').inspect(result)

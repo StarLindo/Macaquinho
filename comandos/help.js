@@ -10,7 +10,7 @@ ${e.funmacaco} Comandos De Diversão:
 \`Bilheteria,Dado,Perfil,Kiss,Hug,Brindar,pat,Sobremim\`
 
 ${e.macaco1} Meus comandos utilitarios:
-\`Botinfo,Help,Emoji,Ping,Randomavatar e Userinfo\` 
+\`Botinfo,Help,Emoji,Ping,Randomavatar,Userinfo e Premiuminfo\` 
 
 ${e.macaco2} Comandos De Economia:
 \`Bal,Dadobet,Caçar,Minerar E Daily\` 
@@ -22,7 +22,7 @@ ${e.macaco2} Comandos De level:
 \`level\`
 
 ${e.funmacaco} Meus Comandos de RP (Role play)
-\`Casar,Divorce,comprarcarro,mapa,pescar,pao,youtube e clan\`
+\`Casar,Divorce,comprarcarro,mapa,pescar,pao,youtube,clan,padaria e comprar\`
 
 
 

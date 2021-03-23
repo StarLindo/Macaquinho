@@ -10,6 +10,9 @@ let adscence = Math.floor(Math.random() * 100) + 10;
 if(db.get(`${message.author.id}_premium`)){
 adscence = Math.floor(Math.random() * 600) + 200;
 }
+if(db.get(`${message.author.id}_paodinheiro`)){
+  adscence = adscence + adscence
+}
 
 
 message.quote(`**Você gravou um video e ganhou R$${adscence},00**`)
