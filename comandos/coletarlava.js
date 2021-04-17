@@ -4,9 +4,13 @@ const db = require('quick.db')
  exports.run = async (client, message, args) => {
 
 let local = db.get(`${message.author.id}_lugar`)
-if(local !== 'Cidade') return message.quote(`**Você tem que estar na cidade para assar um pão,use o comando \`mapa\` para ir para a cidade**!`)
+if(local !== 'Vulcão') return message.quote(`**Você tem que estar no vulcão para coletar lava!,use o comando \`mapa\` para ir para o Vulcão**!`)
 
-let adscence = Math.floor(Math.random() * 100) + 10;
+
+
+let adscence = Math.floor(Math.random() * 50) + 10;
+
+
 
 
 if(db.get(`${message.author.id}_paodinheiro`)){
@@ -21,9 +25,8 @@ if(db.get(`${message.author.id}_premium`) && db.get(`${message.author.id}_paodin
   adscence = adscence*4
 }
 
-  
 
 
-message.quote(`**Você assou um pão,vendeu pro Thiagão do pão e ganhou R$${adscence},00!**`)
-db.add(`money_${message.author.id}`,adscence)
+message.quote(`**Você vendeu sua lava para Thiagão da Lava e ganhou R$${adscence},00**`)
+db.add(`money_${message.author.id}`, adscence)
 }

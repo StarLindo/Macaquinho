@@ -131,14 +131,28 @@ Mensagem completa: **${message.content}**
 client.on('message', async message => {
 
 
+
 if(message.author.bot) return
 let a = db.get(`levelconfig_${message.guild.id}`)
 if(a !== "on")return
+
+let cnlid = db.get(`${message.guild.id}_channeldelevelup`)
+  if (!cnlid) return
+  let cns = message.guild.channels.cache.get(cnlid)
+  if (!cns) return
 
 let amount = Math.floor(Math.random() * 25) + 5;
 
 if(db.get(`${message.author.id}_frutalevel`)){
  amount = amount + amount
+}
+
+if(db.get(`${message.author.id}_premium`)){
+ amount = amount*2
+}
+
+if(db.get(`${message.author.id}_premium`) && db.get(`${message.author.id}_frutalevel`)){
+ amount = amount*4
 }
 
 db.add(`xpzin_${message.author.id}_${message.guild.id}`, amount)
@@ -158,13 +172,17 @@ message.quote(`**Você ganhou R$200.000 e virou premium por ser nivel +30!**`)
 
 let xpzin1 = db.fetch(`xpzin_${message.author.id}_${message.guild.id}`)
 
-if(xpzin1 > 1000){
+if(xpzin1 > 999){
 db.subtract(`xpzin_${message.author.id}_${message.guild.id}`, 999)
 db.add(`levelzin_${message.author.id}_${message.guild.id}`, 1)
 
+const embedee = new DiscordMessageEmbed()
+.setTitle("Level Up!")
+.setDescription(`**O usuario ${message.author} subiu o nivel para ${levelzin1 + 1},Parabens!**`)
 
 let a = message.channel.send(`**Parabens, ${message.author} você subiu o seu nivel, agora você esta no nivel ${levelzin1 + 1}**`).then((a) => a.delete({ timeout: 3000 }))
 
+cns.send(embedee)
 
 }
 
@@ -261,6 +279,8 @@ channel.send(messageapagada);
 
 client.on('guildMemberAdd',  (member, guild) => {
 
+
+
 let cnlid = db.get(`${member.guild.id}_welcomecnl`)
   if (!cnlid) return
   let channel = member.guild.channels.cache.get(cnlid)
@@ -281,6 +301,8 @@ channel.send(`${member}`, embed)
 
 client.on('guildMemberRemove',  (member, guild) => {
 
+
+
 let cnlid = db.get(`${member.guild.id}_welcomecnl`)
   if (!cnlid) return
   let channel = member.guild.channels.cache.get(cnlid)
@@ -289,7 +311,7 @@ let cnlid = db.get(`${member.guild.id}_welcomecnl`)
 
 const embed = new Discord.MessageEmbed()
 .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL())
-.setDescription(`O membro${member} Sai do nosso servidor (**${member.guild.name}**)
+.setDescription(`O membro ${member} Saiu do nosso servidor (**${member.guild.name}**)
 
 Agora que ele saiu temos apenas ${member.guild.members.cache.size} Membros Nesse Incrivel servidor :(`)
 .setColor('ffa500')
@@ -355,6 +377,9 @@ let canal = client.channels.cache.get("823885463860936757")
 
 canal.setName(`Estou em ${client.guilds.cache.size} Servidores!`)
 })
+
+
+
 
 client.login(process.env.TOKEN);
 

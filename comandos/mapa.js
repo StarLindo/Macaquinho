@@ -12,21 +12,23 @@ return message.quote(`**Você precisa de um carro para viajar!**`)
 let lagoa = 'Lagoa'
 let cidade = 'Cidade'
 let casa = 'Sua casa'
+let vulcao = 'Vulcão'
 
   let embed = new Discord.MessageEmbed()
   .setDescription(`${message.author} Escolha para qual lugar você quer ir:
   🌊- Lagoa
   🌆- Cidade
-  🏠- Sua casa`)
+  🏠- Sua casa
+  🌋- Vulcão`)
 
   .setColor('#03fc7b')
   
   message.quote(embed).then(msg => {
 
-   msg.react('🌊').then(() => msg.react('🌆').then(() => msg.react('🏠')))
+   msg.react('🌋').then(() => msg.react('🌊').then(() => msg.react('🌆').then(() => msg.react('🏠'))))
 
     const filter = (reaction, user) => {
-       return ['🌊', '🌆', '🏠'].includes(reaction.emoji.name) && user.id === message.author.id;
+       return ['🌊', '🌆', '🏠', '🌋'].includes(reaction.emoji.name) && user.id === message.author.id;
     };
     
     msg.awaitReactions(filter, { max: 1, time: 60000, errors: ['time']})
@@ -47,7 +49,11 @@ let casa = 'Sua casa'
           message.quote(`**Ok!${message.author} Agora você Está na Sua casa!**`); 
           db.set(`${message.author.id}_lugar`, casa)
         }
-       
+
+       if (reaction.emoji.name == '🌋') {
+          message.quote(`**Ok!${message.author} Agora você Está no vulcão!**`);
+          db.set(`${message.author.id}_lugar`, vulcao)
+        } 
       
       })
       .catch(collected => {

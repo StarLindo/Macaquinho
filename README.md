@@ -12,4 +12,4 @@ Só isso msm ;-;
 # Adicionar o Macaquinho
 
 Quer adicionar o Macaquinho?[Clique Aqui](https://discord.com/oauth2/authorize?=&client_id=748701847824629871&scope=bot&permissions=8)
-
+  

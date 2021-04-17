@@ -16,7 +16,7 @@ ${e.macaco2} Comandos De Economia:
 \`Bal,Dadobet,Caçar,Minerar E Daily\` 
 
 ${e.sunmacaco} Comandos De configuração:
-\`Setmessagelogs,Painel,setwelcome,setprefix e setlevel\`
+\`Setmessagelogs,Painel,setwelcome,setprefix,setlevel e setlevelup\`
 
 ${e.macaco2} Comandos De level:
 \`level\`
